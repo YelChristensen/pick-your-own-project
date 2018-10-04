@@ -20,7 +20,7 @@ class Controls extends React.Component {
     handleRoundsChange(event){
         this.setState({
             rounds: event.target.value
-        }, () => console.log(this.state.rounds))
+        }, () => this.props.setRounds(this.state.rounds))
     }
 
     handleCategoryChange(event){
@@ -61,13 +61,12 @@ class Controls extends React.Component {
                 });
                 break;
         }
-        console.log(this.state.category)
     }
 
     handleDifficultyChange(event){
         this.setState({
             difficulty: event.target.value
-        }, () => console.log(this.state.difficulty))
+        })
     }
 
     handleSubmit(event){

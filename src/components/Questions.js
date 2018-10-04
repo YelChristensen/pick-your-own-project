@@ -1,11 +1,7 @@
 import React from 'react';
 import Question from './Question'
 
-
-
-
 class Questions extends React.Component {
-
 
     render() { 
         const questionArrID = [...this.props.questionArr];
@@ -19,6 +15,7 @@ class Questions extends React.Component {
                     <Question 
                         key={question.question}
                         question={question}
+                        addCorrectAnswers={this.props.addCorrectAnswers}
                     />
                     )
                 }
