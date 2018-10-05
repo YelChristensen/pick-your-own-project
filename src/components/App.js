@@ -112,8 +112,13 @@ class App extends React.Component {
           <div className="header__name">Quiz Hero</div>
         </header>
         <main>
-          <Controls fetchQuestions={this.fetchQuestions} setRounds={this.setRounds}/>
-          <Questions addCorrectAnswers={this.addCorrectAnswers} questionArr={this.state.questionArr} />
+          <section className='controls' >
+            <Controls fetchQuestions={this.fetchQuestions} setRounds={this.setRounds}/>
+          </section>
+          <section className='questions'>
+            <h3>Your Questions</h3>
+            <Questions addCorrectAnswers={this.addCorrectAnswers} questionArr={this.state.questionArr} />
+          </section>
           <button onClick={this.handleSubmit} type="submit">Submit answers</button>
         </main>
       </div>

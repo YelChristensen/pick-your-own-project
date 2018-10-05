@@ -1,0 +1,30 @@
+form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.rounds__list{
+    margin: 0em 1em 0em 1em;
+    background-color: white;
+    border-color:  #1575E6;
+    color: #1575E6;
+}
+
+.category__list{
+    margin: 0em 1em 0em 1em;
+    background-color: white;
+    border-color:  #1575E6;
+    color: #1575E6;
+}
+
+.difficulty__list{
+    margin: 0em 1em 0em 1em;
+    background-color: white;
+    border-color:  #1575E6;
+    color: #1575E6;
+}
+
+#go {
+    margin: 0em;
+}

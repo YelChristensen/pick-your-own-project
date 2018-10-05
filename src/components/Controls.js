@@ -1,5 +1,7 @@
 import React from "react";
 
+import '../styles/components/controls.scss'
+
 class Controls extends React.Component {
     constructor(){
         super();
@@ -77,37 +79,42 @@ class Controls extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="controls">
-       
-            <label>Number of Questions:</label>
-            <select value={this.state.value} onChange={this.handleRoundsChange} className='rounds__list'>
-                <option value=''></option>
-                <option value='1' >1</option>
-                <option value='2' >2</option>
-                <option value='3' >3</option>
-                <option value='4' >4</option>
-                <option value='5' >5</option>
-            </select>
-    
-            <label>Select Category:</label>
-                <select onChange={this.handleCategoryChange} value={this.state.value} className='category__list'>
+            <div className='controls-divs'> 
+                <label>Number of Questions:</label>
+                <select value={this.state.value} onChange={this.handleRoundsChange} className='rounds__list'>
                     <option value=''></option>
-                    <option value='general knowledge' >general knowledge</option>
-                    <option value='science & nature' >science & nature</option>
-                    <option value='sport' >sport</option>
-                    <option value='geography' >geography</option>
-                    <option value='history' >history</option>
-                    <option value='art' >art</option>
-                </select>
+                    <option value='5' >5</option>
+                    <option value='10' >10</option>
+                    <option value='15' >15</option>
+                    <option value='20' >20</option>
+                    <option value='25' >25</option>
+                 </select>
+            </div>
+            <div className='controls-divs'> 
+                <label>Select Category:</label>
+                    <select onChange={this.handleCategoryChange} value={this.state.value} className='category__list'>
+                        <option value=''></option>
+                        <option value='general knowledge' >general knowledge</option>
+                        <option value='science & nature' >science & nature</option>
+                        <option value='sport' >sport</option>
+                        <option value='geography' >geography</option>
+                        <option value='history' >history</option>
+                        <option value='art' >art</option>
+                    </select>
+            </div>
 
-            <label>Select Difficulty:</label>
-                <select onChange={this.handleDifficultyChange} className='difficulty__list'>
-                    <option value=''></option>
-                    <option value='easy' >easy</option>
-                    <option value='medium'>medium</option>
-                    <option value='difficult'>difficult</option>
-                </select>
-      
-        <button  type="submit">Go!</button>
+            <div className='controls-divs'> 
+                <label>Select Difficulty:</label>
+                    <select onChange={this.handleDifficultyChange} className='difficulty__list'>
+                        <option value=''></option>
+                        <option value='easy' >easy</option>
+                        <option value='medium'>medium</option>
+                        <option value='difficult'>difficult</option>
+                    </select>
+            </div>
+    
+            <button  id="go" type="submit">Go!</button>
+    
       </form>
     );
   }

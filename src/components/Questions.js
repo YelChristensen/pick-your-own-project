@@ -1,6 +1,8 @@
 import React from 'react';
 import Question from './Question'
 
+import '../styles/components/questions.scss'
+
 class Questions extends React.Component {
 
     render() { 
