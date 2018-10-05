@@ -1,6 +1,7 @@
 import React from 'react';
 import Controls from './Controls'
 import Questions from './Questions'
+import cx from "classnames";
 import '../styles/components/app.scss';
 
 class App extends React.Component {
@@ -12,7 +13,9 @@ class App extends React.Component {
       questionArr: [],
       correct_answers: 0,
       correct_answer_scale: 0,
-      rounds: 0
+      rounds: 0,
+      result: '',
+      on: false
     }
 
     this.fetchQuestions = this.fetchQuestions.bind(this);
@@ -20,7 +23,9 @@ class App extends React.Component {
     this.correctAnswerRatio = this.correctAnswerRatio.bind(this);
     this.displayResults = this.displayResults.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.setRounds = this.setRounds.bind(this)
+    this.setRounds = this.setRounds.bind(this);
+    this.displayModal = this.displayModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
 
@@ -51,51 +56,55 @@ class App extends React.Component {
   }
 
   displayResults(scale){
+    let result = '';
     switch(true){
       case (scale ===10):
-        console.log('Smashed it!');
+        result = '100%';
         break;
       
       case (scale >= 9): 
-        console.log('9');
+        result = '90%';
         break;
 
       case (scale >= 8): 
-        console.log('8');
+        result = '80%';
         break;
 
       case (scale >= 7): 
-        console.log('7');
+        result = '70%';
         break;
 
       case (scale >= 6):
-        console.log('6');
+        result = '60%';
         break;
       
       case (scale >= 5):
-        console.log('5');
+        result = '50%';
         break;
       
       case (scale >= 4):
-        console.log('4');
+        result = '40%';
         break;
       
       case (scale >= 3):
-        console.log('3');
+        result = '30%';
         break;
       
       case (scale >= 2):
-        console.log('2');
+        result = '20%';
         break;
 
       case (scale >= 1):
-        console.log('1');
+        result = '10%';
         break;
       
       default:
-        console.log("can't handle fractions");
+        result = `0%. Oh dear!`
         break;
     }
+    this.setState({
+      result: `You scored ${result}. You are:`
+    }, () => {console.log(`you have scored ${this.state.result}`); this.displayModal()})
   }
 
   addCorrectAnswers(num){
@@ -104,8 +113,23 @@ class App extends React.Component {
     }, ()=> this.correctAnswerRatio())
   }
 
+  displayModal(){
+    this.setState({
+      on: !this.state.on
+    })
+  }
+
+  closeModal(){
+    this.setState({
+      on: !this.state.on
+    })
+  }
 
   render(){
+    const classes = cx('.modal', {
+      'modal--active': this.state.on
+    });
+
     return (
       <div className="app">
         <header className='header'>
@@ -120,6 +144,12 @@ class App extends React.Component {
             <Questions addCorrectAnswers={this.addCorrectAnswers} questionArr={this.state.questionArr} />
           </section>
           <button onClick={this.handleSubmit} type="submit">Submit answers</button>
+
+          <div id='resultsModal' className={classes}>
+              <span onClick={this.closeModal} className="close">&times;</span>
+              <p>{this.state.result}</p>
+          </div>
+
         </main>
       </div>
     )
