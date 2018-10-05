@@ -56,7 +56,7 @@ button{
 .modal{
   display:none;
   position: fixed;
-  // z-index:1;
+  z-index:0;
   left: 0;
   top:0;
   height: 100%;
@@ -67,7 +67,7 @@ button{
  .modal--active{
   display: block;
   position: absolute;
-  z-index:1;
+  z-index:10;
   left: 50%;
   top:50%;
   height: 80%;

@@ -147,7 +147,7 @@ class App extends React.Component {
       character: char,
       image: img,
       description: descr
-    }, () => {console.log(`you have scored ${this.state.result}`); this.displayModal})
+    }, () => {console.log(`you have scored ${this.state.result}`); this.displayModal()})
   }
 
   addCorrectAnswers(num){
@@ -164,8 +164,13 @@ class App extends React.Component {
 
   closeModal(){
     this.setState({
-      on: !this.state.on
-    })
+      on: !this.state.on,
+      result: '',
+      character: '',
+      image: '',
+      description: '',
+      rounds: 0
+    }, () => this.fetchQuestions())
   }
 
   render(){
