@@ -32,12 +32,13 @@ class App extends React.Component {
   }
 
   fetchQuestions(rounds, category, difficulty) {
-    fetch(
+    return fetch(
       `https://opentdb.com/api.php?amount=${rounds}&category=${category}&difficulty=${difficulty}`
     )
       .then(response => response.json())
       .then(body => {
         this.setState({ questionArr: body.results });
+        console.log(body.results)
       });
   }
 
