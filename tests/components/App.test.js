@@ -13,7 +13,21 @@ const QUESTIONS = {
   'type': "boolean"
 }
 
+
+
 describe('App', () => {
+
+  let wrapper;
+  // Before each test case, we want to (re-)create our wrapper
+  beforeEach(() => {
+    wrapper = shallow(<App />);
+  });
+
+  // After each test case, we want to remove our wrapper
+  afterEach(() => {
+    wrapper = null;
+  });
+
   beforeEach(() => {
     fetch.resetMocks();
   });
@@ -27,7 +41,6 @@ describe('App', () => {
     fetch.mockResponseOnce(
       JSON.stringify({ results: [QUESTIONS]})
     )
-    const wrapper = shallow(<App/>);
     const instance = wrapper.instance();
     
     return instance.fetchQuestions(5, 9, 'easy')
@@ -37,5 +50,22 @@ describe('App', () => {
         expect(questionsState.length).toBe(1);
         expect(questionsState[0]).toMatchObject(QUESTIONS)
       })
+  });
+
+  test('sets the initial number of rounds', () => {
+    const roundsFromState = wrapper.state('rounds');
+    expect(roundsFromState).toBe(0);
+  });
+
+  test('"handleSubmit" should prevent default and display results in a modal', () =>{
+    const handleSubmit = jest.fn();
+    const displayResults = jest.fn();
+    
+    const button = wrapper.find('button');
+    const event = {
+      preventDefault: jest.fn()
+    }
+    button.simulate('click', event);
+    expect(handleSubmit.mock.calls).toEqual()
   })
 });
