@@ -1,8 +1,6 @@
 import React from "react";
 import Question from "./Question";
 
-import "../styles/components/questions.scss";
-
 function Questions({ questionArr, addCorrectAnswers }) {
   const questionArrID = [...questionArr];
   for (let i = 0; i < questionArrID.length; i++) {

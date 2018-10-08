@@ -91,7 +91,7 @@ class Controls extends React.Component {
           <select
             value={this.state.value}
             onChange={this.handleRoundsChange}
-            className="rounds__list"
+            className="controls__list"
           >
             <option value="" />
             <option value="5">5</option>
@@ -106,7 +106,7 @@ class Controls extends React.Component {
           <select
             onChange={this.handleCategoryChange}
             value={this.state.value}
-            className="category__list"
+            className="controls__list"
           >
             <option value="" />
             <option value="general knowledge">general knowledge</option>
@@ -122,7 +122,7 @@ class Controls extends React.Component {
           <label>Select Difficulty:</label>
           <select
             onChange={this.handleDifficultyChange}
-            className="difficulty__list"
+            className="controls__list"
           >
             <option value="" />
             <option value="easy">easy</option>

@@ -2,6 +2,7 @@ import React from "react";
 import Controls from "./Controls";
 import Questions from "./Questions";
 import cx from "classnames";
+
 import "../styles/components/app.scss";
 
 class App extends React.Component {
